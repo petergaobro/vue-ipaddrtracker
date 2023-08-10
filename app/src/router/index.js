@@ -5,13 +5,22 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    meta: {
+      title: "IP Address Tracker"
+    }
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+// change website title from app to IP Address Tracker
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title}`;
+  next()
 })
 
 export default router
